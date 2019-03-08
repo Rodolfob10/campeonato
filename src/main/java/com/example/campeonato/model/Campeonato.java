@@ -1,5 +1,6 @@
 package com.example.campeonato.model;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -17,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @SuppressWarnings("deprecation")
 @Entity
-public class Campeonato {
+public class Campeonato  implements Serializable{
 
 	
 	@Id
@@ -29,7 +30,7 @@ public class Campeonato {
 	private String nome;
 	private String fase;
 	
-	
+	@JsonIgnore
 	@OneToMany(mappedBy = "campeonato", cascade = CascadeType.ALL)
 	private Set<Partida> partidas;
 	

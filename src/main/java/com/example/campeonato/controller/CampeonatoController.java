@@ -43,7 +43,7 @@ public class CampeonatoController {
 	public String excluirCampeonatoByPathVariable(@PathVariable Long id, HttpServletRequest request, HttpServletResponse response)
 	{
 		this.campeonatos.deleteById(id);
-		return "redirect:/campeonatoss";
+		return "redirect:/campeonatos";
 	}
 	
 	@RequestMapping(value ="/alterar/{id}")
