@@ -1,6 +1,5 @@
 package com.example.campeonato.model;
 
-import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -18,9 +17,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @SuppressWarnings("deprecation")
 @Entity
-public class Campeonato  implements Serializable{
+public class Campeonato  {
 
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -59,6 +58,7 @@ public class Campeonato  implements Serializable{
 	public void setPartidas(Set<Partida> partidas) {
 		this.partidas = partidas;
 	}
+	
 	
 	
 	

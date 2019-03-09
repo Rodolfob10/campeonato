@@ -1,30 +1,83 @@
-<!DOCTYPE html>
-<html 
-	xmlns="http://www.w3.org/1999/xhtml" 
-	xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
-	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<!DOCTYPE	html>
+<html	xmlns:th="http://www.thymeleaf.org"	
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width" />
-	<title>Meu Site</title>
-	<link th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet" />
-	<link th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap-theme.min.css}" rel="stylesheet" />
-	
+	<title>Campeonato</title>
+	<link th:href="@{css/bootstrap.min.css}" rel="stylesheet" />
+	<link th:href="@{css/bootstrap1.min.css}" rel="stylesheet" />
+	<link th:href="@{css/bootstrap-theme.min.css}" rel="stylesheet" />
+	<link th:href="@{css/bootstrap1.css}" rel="stylesheet" />
 </head>
-<script th:src="@{/webjars/bootstrap/3.3.7/js/jquery-2.1.4.min.js}"></script>
-<script th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
-<script th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap-datepicker.min.js}"></script>
-<script th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap-datepicker.pt-BR.min.js}"></script>
-<script th:src="@{/webjars/bootstrap/3.3.7/js/jquery.mask.js}"></script>
-<script th:src="@{/webjars/bootstrap/3.3.7/js/jquery.maskMoney.min.js}"></script>
-<script th:src="@{/js/application.js}"></script>
+
 <body>
+	
+	<div class="container">
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  		<a class="navbar-brand" th:href="@{/}"><img th:src="@{images/trofeu.jpg}" width="75px"></a>
+  		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    		<span class="navbar-toggler-icon"></span>
+  		</button>
 
-	<header layout:insert="Cabecalho"></header>
-	<section layout:fragment="Conteudo">
-		<p>Page content goes here</p>
-	</section>
+  		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+    		<ul class="navbar-nav mr-auto">
+      			<li class="nav-item active">
+        			<a class="nav-link" th:href="@{/}">Home<span class="sr-only">(current)</span></a>
+      			</li>
+      			<li class="nav-item">
+	        		<a class="nav-link" th:href="@{/sobre}">Sobre</a>
+    	  		</li>
+      			<li class="nav-item">
+        			<a class="nav-link" th:href="@{/campeonatos}">Cadastrar Campeonato</a>
+      			</li>
+      			<li class="nav-item">
+        			<a class="nav-link" th:href="@{/partidas}">Cadastrar Partida</a>
+      			</li>
+      			
+    		</ul>
+  		</div>
+	</nav>
+	
+	<h1 layout:fragment="header"></h1>
+	<div layout:fragment="content"></div>
+	</div>
+	
+	<footer class="page-footer font-small cyan darken-3 mt-4">
 
+  <!-- Footer Links -->
+  <div class="container">
+
+    <!-- Grid row-->
+    <div class="row">
+
+      <!-- Grid column -->
+      <div class="col-md-12 py-5">
+        <div class="mb-5 flex-center">
+
+          <a class="fb-ic">
+            <i class="fa fa-facebook fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+          </a>
+          <a class="tw-ic">
+            <i class="fa fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+          </a>
+          <a class="gplus-ic">
+            <i class="fa fa-google-plus fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+          </a>
+          <a class="li-ic">
+            <i class="fa fa-linkedin fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+          </a>
+          <a class="ins-ic">
+            <i class="fa fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+          </a>
+          <a class="pin-ic">
+            <i class="fa fa-pinterest fa-lg white-text fa-2x"> </i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-copyright text-center py-3">© 2019 Copyright:
+    <a href="#"> Rodolfo Bezerra</a>
+  </div>
+</footer>
 </body>
-</html>	

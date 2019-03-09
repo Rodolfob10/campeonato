@@ -4,54 +4,68 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="LayoutPadrao">
 
-<section layout:fragment="Conteudo">
-	<div class="panel panel-default" style="margin: 10px">
-		<div class="panel-heading">
-			<h1 class="panel-title">Lista de partidas</h1>
-		</div>
-		<div class="panel-body">
-			<form class="form-inline" method="POST" th:object="${partida}"
-				th:action="@{/partidas}" style="margin: 20px 0">
-				<div class="form-group">
-					<input type="hidden" th:field="*{id}"> 
-					<select class="form-control" id="campeonato" th:field="*{campeonato}">
-						<option th:each="c : ${campeonatos}" th:value="${c.id}" th:text="${c.nome}"></option>
-					</select> 
-					
-					<input type="text" class="form-control" placeholder="Time 1" th:field="*{time1}" /> 
-					<input type="text" class="form-control" placeholder="Time 2" th:field="*{time2}" /> 
-					<input type="text" class="form-control" placeholder="Local" th:field="*{local}" />
-					<button type="submit" class="btn btn-primary">Adicionar</button>
-				</div>
-			</form>
-			<table class="table">
-				<thead>
-					<tr>
-						<th>Time 1</th>
-						<th>Time 2</th>
-						<th>Local</th>
-						<th>Campeonato</th>
+<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"	/>		
+	</head>
 
-						<th colspan=2>Ação</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr th:each="partida : ${partidas}">
-						<td th:text="${partida.time1}">Botafogo</td>
-						<td th:text="${partida.time2}">Flamengo</td>
-						<td th:text="${partida.local}">Nilton Santos</td>
+	<body>
+	
+		<h1	layout:fragment="header"></h1>
+		
+		<div layout:fragment="content" class="panel panel-default" style="margin: 10px">
+			<div class="panel-heading">
+				<h1 class="panel-title">Lista de Partidas</h1>
+			</div>
+			<div class="panel-body">
+				<form class="form-inline" method="POST" 
+				    th:object="${partida}"
+				    th:action="@{/partidas}"
+					style="margin: 20px 0">
+					<div class="form-group">
+						<input type="hidden" th:field="*{id}">
+						<select class="form-control"  id="campeonato" th:field="*{campeonato}">
+							<option th:each="c : ${campeonatos}" th:value="${c.id}" th:text="${c.nome}">
+							</option>
+	                    </select>
+						<input type="text" class="form-control" placeholder="Time 1"
+							th:field="*{time1}" /> 
+						<input type="text" class="form-control"
+							placeholder="Time 2" th:field="*{time2}" />
+							<input type="text" class="form-control"
+							placeholder="Local" th:field="*{local}" />
 						
-						<td th:text="${partida.campeonato.nome}"></td>
-
-						<td><a th:href="@{/partidas/alterar/}+${partida.id}"
-							class="glyphicon glyphicon-pencil"> </a></td>
-						<td><a th:href="@{/partidas/excluir/}+${convidado.id}"
-							class="glyphicon glyphicon-trash"> </a></td>
-
-					</tr>
-				</tbody>
-			</table>
+	                  
+						<button type="submit" class="btn btn-secondary">Adicionar</button>
+					</div>
+				</form>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Time 1</th>
+							<th>Time 2</th>
+							<th>Local</th>
+							<th>Campeonato</th>
+							<th colspan=2> Ação </th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="partida : ${partidas}">
+							<td th:text="${partida.time1}"></td>
+							<td th:text="${partida.time2}"></td>
+							<td th:text="${partida.local}">
+							<td th:text="${partida.campeonato.nome}"></td>
+							<td>							
+							<a th:href="@{/partidas/alterar/}+${partida.id}" class="glyphicon glyphicon­‐pencil">Alterar</a>
+							</td>
+							<td>
+							<a th:href="@{/partidas/excluir/}+${partida.id}" 
+							   class="glyphicon glyphicon­‐trash">Excluir</a>
+							</td>
+							
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		</div>
-	</div>
-</section>
+	</body>
 </html>

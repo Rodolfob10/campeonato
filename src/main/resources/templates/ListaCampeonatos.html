@@ -4,47 +4,54 @@
     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
     layout:decorator="LayoutPadrao">
 
-<section layout:fragment="Conteudo">
-	<div class="panel panel-default" style="margin: 10px">
-		<div class="panel-heading">
-			<h1 class="panel-title">Lista de Campeonatos</h1>
+<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"	/>	
+	</head>
+	
+	<section layout:fragment="header">
+
+		<div class="panel panel-default" style="margin: 10px">
+			<div class="panel-heading">
+				<h1 class="panel-title">Lista de Campeonatos</h1>
+			</div>
+			<div class="panel-body">
+				<form class="form-inline" method="POST" 
+					th:object="${campeonato}" th:action="@{/campeonatos}"
+						style="margin: 20px 0">
+					<div class="form-group">
+						<input type="hidden" th:field="*{id}">
+						<input type="text" class="form-control" placeholder="Nome"
+							th:field="*{nome}" />
+						<input type="text" class="form-control" placeholder="Fase"
+							th:field="*{fase}" /> 
+						<button type="submit" class="btn btn-primary">Adicionar</button>
+					</div>
+				</form>
+			
+				<table class="table">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>Nome</th>
+							<th>Fase</th>
+							<th colspan=2> Ação </th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="campeonato : ${campeonatos}">
+							<td th:text="${campeonato.id}"></td>
+							<td th:text="${campeonato.nome}"></td>
+							<td th:text="${campeonato.fase}"></td>
+							<td>
+								<a th:href="@{/campeonatos/alterar/}+${campeonato.id}" class="glyphicon glyphicon-pencil"> Alterar</a></td>
+							<td>
+								<a th:href="@{/campeonatos/excluir/}+${campeonato.id}" class="glyphicon glyphicon-trash">Excluir </a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		</div>
-		<div class="panel-body">
-			<form class="form-inline" method="POST" 
-			    th:object="${festa}"
-			    th:action="@{/festas}"
-				style="margin: 20px 0">
-				<div class="form-group">
-					<input type="hidden" th:field="*{id}">
-					<input type="text" class="form-control" placeholder="Nome"
-						th:field="*{nome}" /> 
-					<button type="submit" class="btn btn-primary">Adicionar</button>
-				</div>
-			</form>
-			<table class="table">
-				<thead>
-					<tr>
-						<th>#</th>
-						<th>Nome</th>
-						<th colspan=2> Ação </th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr th:each="campeonato : ${campeonatoss}">
-						<td th:text="${campeonato.id}">1</td>
-						<td th:text="${campeonato.nome}">Brasileiro</td>
-						
-						<td>
-						<a th:href="@{/campeonatos/alterar/}+${festa.id}" class="glyphicon glyphicon-pencil"> </a>
-						</td>
-						<td>
-						<a th:href="@{/campeonatos/excluir/}+${festa.id}" 
-						   class="glyphicon glyphicon-trash"> </a>
-						</td>		
-					</tr>
-				</tbody>
-			</table>
-		</div>
-	</div>
-</section>
+
+	</section>
 </html>	
